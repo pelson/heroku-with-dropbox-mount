@@ -7,11 +7,6 @@ import tornado.ioloop
 import tornado.web
 
 
-class MainHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.write("Hello, world")
-
-
 class FileIndex(tornado.web.RequestHandler):
     SUPPORTED_METHODS = ['GET']
 
@@ -60,8 +55,7 @@ class FileIndex(tornado.web.RequestHandler):
 
 def make_app():
     return tornado.web.Application([
-        (r"/", MainHandler),
-        (r'/index/(.*)$', FileIndex),
+        (r'/?(.*)$', FileIndex),
     ])
 
 
